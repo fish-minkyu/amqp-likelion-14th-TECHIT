@@ -50,6 +50,7 @@ public class ProducerService {
     // resultPath는 Consumer가 기록해준다.
     JobStatus jobStatus = JobStatus.fromEntity(jobRepository.save(newJob));
     // 모든 정보가 준비되면 메시지를 브로커에 전송
+    // gson.toJson(payload): JobPayload 객체를 문자열 형태로 직렬화해서 메시지 전송
     rabbitTemplate.convertAndSend(jobQueue.getName(), gson.toJson(payload));
     log.info("Sent Job: {}", jobId);
     // 사용자에게 응답

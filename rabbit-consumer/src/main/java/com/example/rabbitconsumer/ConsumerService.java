@@ -49,5 +49,4 @@ public class ConsumerService {
     log.info("completed: {}", jobId);
     // => Producer와 DB를 공유하고 있으므로 사용자가 Ticket을 들고 상태를 확인하면 "작업 완료"를 확인할 수 있다.
   }
-
 }
