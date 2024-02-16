@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    username: fdxkzhhz
+    password: LEUeKykyuwAzwab8-DoXLzQUf9REis4G
+    host: dingo-01.rmq.cloudamqp.com
+    virtual-host: fdxkzhhz

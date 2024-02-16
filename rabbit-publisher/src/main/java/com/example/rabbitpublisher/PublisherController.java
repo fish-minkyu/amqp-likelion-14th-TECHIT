@@ -16,4 +16,12 @@ public class PublisherController {
   ) {
     service.setFanoutMessage(message);
   }
+
+  @PostMapping("/direct")
+  public void direct(
+    @RequestParam("key") String key,
+    @RequestParam("message") String message
+  ) {
+    service.directMessage(key, message);
+  }
 }
