@@ -9,8 +9,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -52,5 +54,11 @@ public class ProducerService {
     log.info("Sent Job: {}", jobId);
     // 사용자에게 응답
     return jobStatus;
+  }
+
+  // 사용자가 Producer에게 Ticket을 들고 Status를 확인하는 메서드
+  public JobStatus getJobStatus(String jobId) {
+    return JobStatus.fromEntity(jobRepository.findByJobId(jobId)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
   }
 }

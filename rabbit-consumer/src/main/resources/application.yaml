@@ -6,14 +6,15 @@ spring:
     virtual-host: fdxkzhhz
 
   datasource:
-    url: jdbc:sqlite:db.sqlite
+    # 상위 경로에 있는 producer의 db sqlite를 사용하겠다란 의미
+    url: jdbc:sqlite:../rabbit-producer/db.sqlite
     driver-class-name: org.sqlite.JDBC
     username: sa
     password: password
 
-    jpa:
-      hibernate:
-        # 소비하는 쪽이므로 SQLite를 실행하면 안된다.
-        ddl-auto: none
-      database-platform: org.hibernate.community.dialect.SQLiteDialect
-      show-sql: true
+  jpa:
+    hibernate:
+      # producer의 DB를 사용하므로 none이다.
+      ddl-auto: none
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    show-sql: true

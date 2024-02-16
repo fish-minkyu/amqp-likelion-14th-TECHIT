@@ -26,4 +26,11 @@ public class ProducerController {
     ) {
     return service.send(dto);
   }
+
+  @GetMapping("/get-job")
+  public JobStatus getJob(
+    @RequestParam("job") String jobId
+  ) {
+    return service.getJobStatus(jobId);
+  }
 }
