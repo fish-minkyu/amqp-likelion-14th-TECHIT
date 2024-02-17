@@ -84,5 +84,4 @@ public class SubscriberConfig {
       .to(topicExchange())
       .with("log.*");
   }
-
 }

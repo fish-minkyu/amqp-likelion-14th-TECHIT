@@ -2,6 +2,7 @@
 
 - 2024.02.14 ~ 02.15 `14주차`
 - 02.14 - RabbitMQ: Competing Consumers
+- 02.15 - RabbitMQ: Publish Subscribe
 
 `2월 14일`
 <details>
@@ -27,10 +28,30 @@
 <div>ConsumerService</div>
 </details>
 
+`2월 15일`
+
+<details>
+<summary><strong>Publish Page</strong></summary>
+
+- Fanout Exchange & Direct Exchange & Topic Exchange
+
+<div>PublisherConfig</div>
+<div>PublisherService</div>
+<div>PublisherController</div>
+</details>
+
+<details>
+<summary><strong>Subscribe Page</strong></summary>
+
+- Fanout Exchange & Direct Exchange & Topic Exchange
+
+<div>SubscriberConfig</div>
+<div>SubscriberService</div>
+</details>
+
 # README.md
 
 - [RabbitMQ_Producer_README.md](/rabbit-producer/README.md)
-
 
 - [RabbitMQ_Consumer_README.md](/rabbit-consumer/README.md)
 
