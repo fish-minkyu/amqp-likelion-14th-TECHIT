@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SubscriberConfig {
+
+  // Fanout Exchange 정의
   @Bean
   // 내가 갈 우체국
   public FanoutExchange fanoutExchange() {
@@ -14,6 +16,7 @@ public class SubscriberConfig {
     return new FanoutExchange("boot.fanout");
   }
 
+  // Fanout Exchange - Queue 정의
   @Bean
   // 내 우체통
   public Queue fanoutQueue() {
@@ -21,6 +24,7 @@ public class SubscriberConfig {
     return new AnonymousQueue();
   }
 
+  // Fanout Exchage와 Queue 연결
   @Bean
   public Binding fanoutBinding() {
     // 우체통을 우체국에 전달
@@ -62,4 +66,23 @@ public class SubscriberConfig {
       // Binding key
       .with("warning");
   }
+
+  @Bean
+  public TopicExchange topicExchange() {
+    return new TopicExchange("boot.topic");
+  }
+
+  @Bean
+  public Queue topicQueue() {
+    return new AnonymousQueue();
+  }
+
+  @Bean
+  public Binding topicBinding() {
+    return BindingBuilder
+      .bind(topicQueue())
+      .to(topicExchange())
+      .with("log.*");
+  }
+
 }

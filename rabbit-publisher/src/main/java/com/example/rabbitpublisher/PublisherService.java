@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,17 @@ public class PublisherService {
       directExchange.getName(),
       // Routing Key
       key,
+      message
+    );
+  }
+
+  private final TopicExchange topicExchange;
+
+  // topic 종류의 exchange에 message 보내기
+  public void topicMessage(String topic, String message) {
+    rabbitTemplate.convertAndSend(
+      topicExchange.getName(),
+      topic,
       message
     );
   }
